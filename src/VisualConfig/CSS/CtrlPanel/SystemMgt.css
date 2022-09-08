@@ -1,0 +1,153 @@
+﻿@charset "utf-8";
+div.ProcUnitHorizMenu50 {
+  height: 49px;
+  clear: both;
+  border-bottom: solid 1px var(--ColorSplitHG);
+  display: flex;
+  /* margin-top: 20px; */
+  /* margin-left: 20px; */
+}
+div.ProcUnitHorizMenu50 > ul.InnerMenu50 {
+  border-bottom: none !important;
+  flex: 1;
+}
+div.ProcUnitHorizMenu50 > ul.InnerMenu50 > li {
+  height: 49px !important;
+}
+div.ProcUnitHorizMenu50 > div.Inner50 {
+  width: 430px;
+  display: flex;
+  align-items: center;
+}
+div.ProcUnitHorizMenu50 > div.Inner50 input.Inner50 {
+  width: 350px;
+}
+div.ProcUnitHorizMenu50 div.InnerBtn50 {
+  height: 49px;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+div.ProcUnitHorizMenu50 div.InnerBtn50:hover {
+  background-color: var(--ColorUnderHG);
+}
+div.ProcUnitHorizMenu50 div.InnerBtn50.AuxiMarkCurrentTab18 {
+  height: 47px;
+  border-bottom: 2px solid var(--ColorSchemaHG);
+}
+div.proc-unit-tree-navi-50 {
+  background-color: #eaedf1;
+}
+div.proc-unit-tree-navi-50 div.el-tree-node__content {
+  height: 50px;
+  padding-right: 20px;
+}
+div.proc-unit-tree-navi-50 div.el-tree-node__content:hover,
+div.proc-unit-tree-navi-50 div.is-current > div.el-tree-node__content {
+  background-color: #fff !important;
+}
+div.proc-unit-tree-navi-50 div.el-tree__empty-block {
+  min-height: 50px;
+}
+/*Data List by Table*/
+table.ProcUnitDataAdapter50,
+ul.ProcUnitDataAdapter50 {
+  float: left;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+table.ProcUnitDataAdapter50 {
+  border-collapse: collapse;
+  border: none;
+}
+
+ul.ProcUnitDataAdapter50 {
+  padding: 0;
+  margin-bottom: 0;
+  border-top: 1px solid var(--ColorSplitHG);
+}
+
+table.ProcUnitDataAdapter50 tr th,
+table.ProcUnitDataAdapter50 tr td,
+ul.ProcUnitDataAdapter50 > li {
+  border: 1px solid var(--ColorSplitHG);
+  white-space: nowrap;
+  line-height: 32px;
+  padding: 4px 18px 4px 18px;
+  font-size: 14px;
+}
+table.ProcUnitDataAdapter50 tr th {
+  font-weight: normal;
+  text-align: left;
+}
+table.ProcUnitDataAdapter50 tr.inner-title-50,
+ul.ProcUnitDataAdapter50 > li.inner-title-50 {
+  background-color: var(--ColorUnderHG);
+}
+table.ProcUnitDataAdapter50 tr td.InnerRI0250,
+table.ProcUnitDataAdapter50 tr th.InnerRI0250 {
+  border: none;
+  padding: unset;
+  background-color: #ffffff;
+}
+table.ProcUnitDataAdapter50 tr td.InnerRI0250 div {
+  height: 40px;
+  line-height: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: var(--ColorUnderHG);
+  font-size: 16px;
+}
+table.ProcUnitDataAdapter50 tr td.InnerCP0250 a,
+table.ProcUnitDataAdapter50 tr td.InnerCP0250 span {
+  margin-right: 14px;
+}
+table.ProcUnitDataAdapter50 tr td.InnerCP0250 *:last-child {
+  margin-right: unset;
+}
+div.el-pagination{
+  margin-top: 20px;
+  margin-left: 20px;
+}
+div.proc-unit-form-50 {
+  float: left;
+  margin-left: 20px;
+  margin-top: 20px;
+  font-size: medium;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+div.proc-unit-form-50 span.inner-title-50 {
+  margin-right: 10px;
+}
+div.proc-unit-form-52 {
+  float: left;
+  margin-left: 20px;
+  margin-top: 20px;
+  font-size: medium;
+  display: flex;
+  font-size: 14px;
+}
+div.proc-unit-form-52 span.inner-title-50 {
+  margin-right: 10px;
+}
+input.proc-unit-textbox-50,
+textarea.proc-unit-textbox-50 {
+  box-sizing: border-box;
+  border: 1px solid var(--ColorSplitHG);
+  border-radius: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+  font-size: 14px;
+}
+input.proc-unit-textbox-50 {
+  height: 36px;
+}
+textarea.proc-unit-textbox-50 {
+  line-height: 24px;
+}

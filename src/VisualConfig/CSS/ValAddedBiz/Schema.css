@@ -1,0 +1,88 @@
+﻿@charset "utf-8";
+div.proc-unit-horiz-bar-3r {
+  height: 40px;
+  background-color: #f0f0f0;
+  font-size: 12px;
+}
+@media (max-width: 1440px) {
+  div.auxi-width-3t {
+    width: 1200px;
+  }
+}
+@media (min-width: 1441px) {
+  div.auxi-width-3t {
+    width: 1400px;
+  }
+}
+div.auxi-width-3t {
+  position: relative;
+  margin: 0 auto;
+}
+div.auxi-width-3r {
+  width: 100%;
+}
+div.proc-unit-top-navi-3r {
+  background-color: #f0f0f0;
+  height: 40px;
+}
+div.proc-unit-top-navi-3r div.inner-bar-3r {
+  height: 40px;
+  display: flex;
+  justify-content: right;
+}
+div.proc-unit-top-navi-3r div.inner-bar-3r div.inner-link-3r {
+  display: flex;
+  align-items: center;
+}
+div.proc-unit-top-navi-3r div.inner-bar-3r div.inner-link-3r a {
+  font-size: 12px;
+  margin-left: 16px;
+}
+div.proc-unit-main-navi-3r {
+  height: 80px;
+  background-color: #fff;
+  -webkit-box-shadow: 0 20px 30px 0 rgb(0 0 0 / 10%);
+  box-shadow: 0 20px 30px 0 rgb(0 0 0 / 10%);
+}
+div.proc-unit-main-navi-3r div.inner-bar-3r {
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+div.proc-unit-main-navi-3r div.inner-bar-3r div.inner-logo-3r {
+  width: 212px;
+}
+div.proc-unit-main-navi-3r div.inner-bar-3r ul.inner-navi-3r {
+  flex: 1;
+  display: flex;
+  justify-content: right;
+}
+div.proc-unit-main-navi-3r div.inner-bar-3r ul.inner-navi-3r li {
+  padding-left: 40px;
+}
+div.proc-unit-main-navi-3r div.inner-bar-3r ul.inner-navi-3r li div {
+  font-size: 16px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+div.proc-unit-main-navi-3r div.inner-bar-3r ul.inner-navi-3r li div:hover {
+  height: 76px;
+  border-bottom: 4px solid var(--ColorSchemaHG);
+}
+div.proc-unit-bottom-navi-3r {
+  height: 450px;
+  background: #393939 url(https://cd.yzf.com.cn/_nuxt/img/footer-bg.dde422a.png) bottom no-repeat;
+  margin-top: 20px;
+}
+div.proc-unit-bottom-navi-3r > div.inner-box-3r {
+  height: 450px;
+  display: flex;
+}
+div.proc-unit-copyright-3r {
+  height: 90px;
+  background-color: #292929;
+}
+div.proc-unit-copyright-3r > div.inner-box-3r {
+  height: 90px;
+}
