@@ -92,13 +92,34 @@
       <a class="InnerBtn3R" @click="handleReturnDataList">返回</a>
     </div>
     <div>
-      <a class="InnerBtn3R" title="重置">重置</a>
+      <a class="InnerBtn3R" title="重置" @click="funcReset">重置</a>
       <a class="InnerBtn3R" ei020="FileList" eg010="1" title="文件管理"
         >文件管理</a
       >
       <a class="InnerBtn3R" title="提交" @click="reqFuncMain">提交</a>
     </div>
   </div>
+  <!-- el 上传图片 -->
+  <!-- <div>
+    <el-upload
+      ref="uploadRef"
+      action="https://wh011024.mysh360.com/fileServSystemMgt/fileUpload"
+      :auto-upload="false"
+      :data="reqParamPic"
+    >
+      <template #trigger>
+        <el-button type="primary">select file</el-button>
+      </template>
+
+      <el-button class="ml-3" type="success" @click="submitUpload">
+        upload to server
+      </el-button>
+    </el-upload>
+  </div> -->
+  <!-- fetch方式上传 -->
+  <input type="file" id="fileUpload" />
+  <button @click="handleFileUploadFetch">上传图片到服务器</button>
+  <div id="picbind"><img src="{{ picUpload }}" /></div>
 </template>
 <script setup>
 import { ref, getCurrentInstance, watch, onMounted, onActivated } from "vue";
@@ -114,13 +135,19 @@ let reqParam = {
   CurrentDataGroup: jsonCurrntDataGroup.NumDataGroup,
   StrPrimaryKey: proxy.$route.query.PrimaryKey,
 };
+//设置新变量用于保存发送了怕请求之后的数据
+let strReset = [];
 // 发送请求数据
 proxy.$HelperAxios
   .post("/DataAccessWithGroup/DetailedDataRow", reqParam)
   .then((responseResult) => {
     jsonMainEdited.value = responseResult.Payload;
+    strReset = JSON.parse(JSON.stringify(responseResult.Payload));
   });
-
+//点击重置恢复之前的数据状态
+function funcReset() {
+  jsonMainEdited.value = JSON.parse(JSON.stringify(strReset));
+}
 // 工具函数---点击事件提交修改文章请求
 function reqFuncMain() {
   let reqParam = jsonMainEdited.value;
@@ -147,6 +174,72 @@ const jsonArrayoptions = [
     label: "生效",
   },
 ];
+// 通过el组件上传图片
+// const uploadRef = ref(null);
+// const reqParamPic = {
+//   CurrentDataGroup: 50012,
+//   StrPrimaryKey:
+//     "eyJERjAzMDAwIjoiMTU5NDg2NzU5NjUwNzY0ODAiLCJERjAzNDYwIjoiZW4ifQFillFill",
+//   FileType: "ImageFile",
+//   AccessToken:
+//     "eyJhbGdvIjogIkhTMjU2IiwidHlwIjogIkpXVCJ9.eyJEVDA0MCI6IjIwMjItMDgtMTYgMDY6Mjg6MDAiLCJPVTAxMCI6IjE1NzY0OTc0NjI0MTYyODE2IiwiU3RyU00wMjAiOiJTZXNpIn0%3D.KjQUCZSJOP43Ks7zZMDctQJeV5x8FhseuMn25TEcQIE%3D",
+// };
+// const submitUpload = () => {
+//   uploadRef.value.submit();
+// };
+// 设置变量接收传上去的照片
+let picUpload = ref();
+//fetch方式上传图片
+function handleFileUploadFetch() {
+  // 1.获取accessToken
+  const accessToken = window.localStorage.getItem("AccessToken");
+  //2.获取上传的文件
+  const fileUploadInner = document.querySelector("#fileUpload");
+  // console.log(fileUploadInner.files[0]);
+  // 3.声明formdata拿file中的图片
+  const formData = new FormData();
+  picUpload.value = fileUploadInner.files[0];
+  console.log(picUpload.value);
+  formData.append("file", fileUploadInner.files[0]);
+  formData.append("CurrentDataGroup", jsonCurrntDataGroup.NumDataGroup);
+  formData.append("StrPrimaryKey", proxy.$route.query.PrimaryKey);
+  formData.append("FileType", "ImageFile");
+  formData.append("AccessToken", accessToken);
+  fetch(" http://wh011024.mysh360.com/FileServSystemMgt/FileUpload", {
+    method: "POST",
+    body: formData,
+  })
+    .then((responseResult) => {
+      if (responseResult.ok) {
+        return responseResult.text();
+      } else {
+        ElMessage({
+          type: "error",
+          message: "接口请求失败.",
+        });
+        return "FailResponse";
+      }
+    })
+    .then((strResult) => {
+      if (strResult !== "FailResponse") {
+        // 将JSON字符串转化成JSON对象
+        let jsonResult = JSON.parse(strResult);
+        if (jsonResult.SC120 === "SuccLocal") {
+          ElMessage({
+            type: jsonResult.CT040,
+            message: jsonResult.Msg,
+          });
+          // 如果传入图片格式不是.jpg给予提示格式错误。当前只能上传.jpg格式的图片
+        } else if (jsonResult.SC120 === "ForbidFT010") {
+          ElMessage({
+            type: jsonResult.CT040,
+            message: "不支持当前图片类型，请上传.jpg图片",
+          });
+        }
+      }
+    });
+}
+
 onMounted(() => {});
 onActivated(() => {});
 </script>
